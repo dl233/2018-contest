@@ -19,9 +19,9 @@ function getNumberBGC(number){
 	case 256:return "#edcc61";break;
 	case 512:return "#9c0";break;
 	case 1024:return "#33b5e5";break;
-	case 2048:return "#09c";break;
-	case 4096:return "#a6c";break;
-	case 8192:return "#93c";break;
+	case 2048:{gameover();$('#gameover-text').text("You Win!");	$('#gameover').append('<a class="gameovera" onClick="Continue()">Continue~</a>');return "#09c";break;}
+	case 4096:{gameover();$('#gameover-text').text("牛逼！!");	$('#gameover').append('<a class="gameovera" onClick="Continue()">Continue~</a>');return"#a6c";break;}
+	case 8192:{gameover();$('#gameover-text').text("大神！！!");	$('#gameover').append('<a class="gameovera" onClick="Continue()">Continue~</a>');return"#93c";break;}
 	}
 	return "black";
 }
@@ -39,14 +39,15 @@ function nospace(board){
 			if(board[i][j]==0)
 				return false;
 		}
+	
 	return true;
 }
 
 function nomove(board){
-	if(canMoveDown()||
-	   canMoveLeft()||
-	   canMoveUp()||
-	   canMoveRight())
+	if(canMoveDown(board)||
+	   canMoveLeft(board)||
+	   canMoveUp(board)||
+	   canMoveRight(board))
 	   	return false;
 	   else
 	   return true;

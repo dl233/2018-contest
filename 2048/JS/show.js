@@ -10,7 +10,7 @@ function showNumberWA(i,j,randNumber){
 		height:"100px",
 		top:getPosTop(i,j),
 		left:getPosLeft(i,j)
-	},50);
+	},100);
 }
 
 function showMoveAnimation(fromx,fromy,tox,toy){
@@ -22,6 +22,7 @@ function showMoveAnimation(fromx,fromy,tox,toy){
 	},200);
 }
 
-function UpdateScore(score){
+function UpdateScore(score,maxscore){
 	$('#score').text(score);
+	$('#maxscore').text(maxscore);
 }

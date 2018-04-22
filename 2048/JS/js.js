@@ -1,7 +1,8 @@
 var board=new Array();
 var score=0;
 var hasConflicted=new Array();
-
+var maxscore=0;
+var lock=true;
 
 $(document).ready(function(){
 	newgame();
@@ -36,7 +37,9 @@ function init(){
 		}
 			
 	}
-	
+	score=0;lock=true;
+	UpdateScore(score,maxscore);
+	$('#gameover').remove();
 	updateBoardView();
 }
 
@@ -142,12 +145,18 @@ function isgameover(){
 	}
 }
 function gameover(){
-	alert("Game Over!");
+	$('#grid-board').append('<div id="gameover"><p id="gameover-text">Game   Over</p><a class="gameovera" onClick="newgame()">Try Again</a></div>');
+	lock=false;
+}
+
+function Continue(){
+	lock=true;
+	$('#gameover').remove();
 }
 
 function moveLeft(){
 	
-	if(!canMoveLeft(board))
+	if(!canMoveLeft(board)||!lock)
 		return false;
 	
 	for(var i=0;i<4;i++)
@@ -166,7 +175,9 @@ function moveLeft(){
 						board[i][k]+=board[i][j];
 						board[i][j]=0; 
 						score+=board[i][k];
-						UpdateScore(score);
+						if(score>maxscore)
+							maxscore=score;
+						UpdateScore(score,maxscore);
 						
 						hasConflicted[i][k]=true;
 						continue;
@@ -179,7 +190,7 @@ function moveLeft(){
 }
 
 function moveUp(){
-	if(!canMoveUp(board))
+	if(!canMoveUp(board)||!lock)
 	return false;
 	
 	for(var j=0;j<4;j++)
@@ -197,8 +208,10 @@ function moveUp(){
 						showMoveAnimation(i,j,k,j);
 						board[k][j]+=board[i][j];
 						board[i][j]=0;
-						score+=board[i][k];
-						UpdateScore(score);
+						score+=board[k][j];
+						if(score>maxscore)
+							maxscore=score;
+						UpdateScore(score,maxscore);
 						hasConflicted[k][j]=true;
 						continue;
 					}
@@ -210,7 +223,7 @@ function moveUp(){
 }
 
 function moveDown(){
-	if(!canMoveDown(board))
+	if(!canMoveDown(board)||!lock)
 	return false;
 	
 	for(var j=0;j<4;j++)
@@ -229,9 +242,10 @@ function moveDown(){
 						showMoveAnimation(i,j,k,j);
 						board[k][j]+=board[i][j];
 						board[i][j]=0;
-						score+=board[i][k];
-						UpdateScore(score);
-						
+						score+=board[k][j];
+						if(score>maxscore)
+							maxscore=score;
+						UpdateScore(score,maxscore);
 						hasConflicted[k][j]=true;
 						continue;
 					}
@@ -244,7 +258,7 @@ function moveDown(){
 
 function moveRight(){
 	
-		if(!canMoveRight(board))
+		if(!canMoveRight(board)||!lock)
 		return false;
 	    
 	   for(var i=0;i<4;i++)
@@ -264,7 +278,9 @@ function moveRight(){
 						board[i][k]+=board[i][j];
 						board[i][j]=0; 
 						score+=board[i][k];
-						UpdateScore(score);
+						if(score>maxscore)
+							maxscore=score;
+						UpdateScore(score,maxscore);
 						hasConflicted[i][k]=true;
 						continue;
 					}

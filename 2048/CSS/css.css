@@ -66,3 +66,41 @@ header p{
 	
 	position: absolute;
 }
+
+#gameover{
+	height: 100%;
+	width: 100%;
+	opacity: 0.5;
+	background-color: white;
+	left: 0px;
+	top: 0px;
+	
+	position: absolute;
+}
+
+#gameover-text{
+	width: 500px;
+	height:100px;
+	font-family: Arial;
+	font-size:50px;
+	text-align: center;
+	top: 150px;
+}
+
+.gameovera{
+	display: block;
+	margin: 20px auto;
+	width: 100px;
+	padding: 10px 10px;
+	background-color: #8f7a66;
+	font-family: Arial;
+	color: white;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+..gameovera:hover{
+	background-color: #9f8b77;
+}
+
