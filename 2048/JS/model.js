@@ -1,10 +1,15 @@
 // JavaScript Document
+var documentWidth=window.screen.availWidth;
+var gridContainerWidth=0.92*documentWidth;
+var cellSideLength=0.18*documentWidth;
+var cellSpace=0.04*documentWidth;
+
 function getPosTop(i,l){
-	return (20+i*120);
+	return (cellSpace+i*(cellSpace+cellSideLength));
 }
 
 function getPosLeft(i,l){
-	return 20+l*120;
+	return (cellSpace+l*(cellSpace+cellSideLength));
 }
 
 function getNumberBGC(number){

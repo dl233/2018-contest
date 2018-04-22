@@ -1,3 +1,4 @@
+// JavaScript Document
 function showNumberWA(i,j,randNumber){
 	
 	var numbercell=$('#number-cell-'+i+'-'+j);
@@ -6,8 +7,8 @@ function showNumberWA(i,j,randNumber){
 	numbercell.text(randNumber);
 	
 	numbercell.animate({
-		width:"100px",
-		height:"100px",
+		width:cellSideLength,
+		height:cellSideLength,
 		top:getPosTop(i,j),
 		left:getPosLeft(i,j)
 	},100);

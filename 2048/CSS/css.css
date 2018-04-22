@@ -3,12 +3,12 @@
 header{
 	display: block;
 	margin:0 auto;
-	width: 500px;
+	width: 100%;
 	text-align: center;
 }
 header h1{
 	font-family: Arial;
-	font-size: 60px;
+	font-size:40px;
 	font-weight: bold;
 }
 
@@ -100,7 +100,6 @@ header p{
 	text-align: center;
 }
 
-..gameovera:hover{
+.gameovera:hover{
 	background-color: #9f8b77;
 }
-
